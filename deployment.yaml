@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uptime-server-deployment
+  labels:
+    app: uptime-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: uptime-server
+  template:
+    metadata:
+      labels:
+        app: uptime-server
+    spec:
+      containers:
+      - name: uptime-server
+        image: ghcr.io/karlcaga/uptime-server:main
+        ports:
+        - containerPort: 8080
